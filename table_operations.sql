@@ -23,3 +23,9 @@ FROM mhc_data x
 WHERE x.mhc NOT IN (SELECT DISTINCT mhc
                     FROM mhc_test2);
 
+
+-- Purge Train set of any tuples in test set 1
+DELETE
+FROM mhc_train
+WHERE id IN (SELECT y.id
+             FROM mhc_test1 AS y);

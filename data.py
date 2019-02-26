@@ -11,3 +11,4 @@ def mhc_dataset():
     dataset = np.array(c.fetchall())
     conn.close()
     return dataset.T[0], -np.log10(dataset.T[1].astype(float)), dataset.T[2]
+
