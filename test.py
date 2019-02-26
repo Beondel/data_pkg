@@ -1,4 +1,6 @@
 from data import *
 
-data = mhc_dataset()
-print(data)
+x, y, z = mhc_dataset()
+print(x)
+print(y)
+print(z)
