@@ -29,3 +29,10 @@ DELETE
 FROM mhc_train
 WHERE id IN (SELECT y.id
              FROM mhc_test1 AS y);
+             
+             
+-- Remove benchmark sequences from training set
+DELETE 
+FROM mhc_train
+WHERE sequence in (SELECT sequence
+                   FROM mhc_bench)
