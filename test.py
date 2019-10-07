@@ -20,7 +20,8 @@ print(z)
 print()
 
 
-x, y, z = mhc_datasets('mhc_bench', './mhc.db', False, False, False)
+w, x, y, z = mhc_datasets('mhc_bench', './mhc.db', False, False, False)
+print(w)
 print(x)
 print(y)
 print(z)

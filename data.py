@@ -18,7 +18,7 @@ def mhc_datasets(table='mhc_data', path='./mhc.db', remove_c=False, remove_u=Fal
     if table != 'mhc_data' and table != 'mhc_bench':
         selection = 'sequence, meas, mhc'
     elif table == 'mhc_bench':
-        selection = 'sequence, measurement_value, allele'
+        selection = 'sequence, measurement_type, measurement_value, allele'
     conn = sql.connect(path)
     c = conn.cursor()
     c.execute(_create_query(selection, table, remove_c, remove_u, remove_modes))
@@ -26,6 +26,8 @@ def mhc_datasets(table='mhc_data', path='./mhc.db', remove_c=False, remove_u=Fal
     conn.close()
     if table == 'mhc_data':
         return dataset
+    if table == 'mhc_bench':
+        return dataset.T[0], dataset.T[1], dataset.T[2].astype(float), dataset.T[3]
     return dataset.T[0], -np.log10(dataset.T[1].astype(float)), dataset.T[2]
 
 def _create_query(selection, table, remove_c, remove_u, remove_modes):
